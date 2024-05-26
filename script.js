@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', (event) => {
   const gridContainer = document.getElementById('calendar');
-  const totalWeeks = 4576;
+  const totalWeeks = 88 * 52; // 88 years worth of weeks
 
   // Calculate the current week
   const startDate = new Date('2004-01-27');
@@ -17,10 +17,15 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const weekDate = new Date(startDate);
     weekDate.setDate(startDate.getDate() + i * 7);
 
-    const weekNumber = Math.floor(i / 52) + 1;
+    const weekNumber = i + 1;
     const weekDay = weekDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
 
-    gridItem.innerHTML = `<span>Week ${weekNumber}<br>${weekDay}</span>`;
+    // Highlight the current week
+    if (i <= weeksSinceStart) {
+      gridItem.classList.add('completed');
+    }
+
+    gridItem.innerHTML = `<span>${weekNumber}<br>${weekDay}</span>`;
 
     // Highlight the current week
     if (i === weeksSinceStart) {
