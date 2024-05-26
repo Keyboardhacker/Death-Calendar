@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
   // Calculate the current week
   const startDate = new Date('2004-01-27');
-  const currentDate = new Date('2024-05-25');
+  const currentDate = new Date();
   const weeksSinceStart = Math.floor((currentDate - startDate) / (1000 * 60 * 60 * 24 * 7));
 
   // Load saved state from localStorage
