@@ -1,5 +1,4 @@
 body {
-body {
   font-family: 'Arial', sans-serif;
   background-color: #f0f8ff;
   margin: 0;
@@ -36,14 +35,14 @@ main {
 
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(10, 1fr);
-  grid-gap: 15px;
+  grid-template-columns: repeat(auto-fill, minmax(20px, 1fr));
+  grid-gap: 5px;
   margin-bottom: 20px;
 }
 
 .grid-item {
-  width: 100%;
-  padding-top: 100%; /* This creates a square */
+  width: 20px;
+  height: 20px;
   background-color: #ecf0f1;
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -81,4 +80,18 @@ footer {
   margin-top: 20px;
   color: #34495e;
   font-size: 0.9em;
+}
+
+#new-week-button {
+  padding: 10px 20px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#new-week-button:hover {
+  background-color: #2980b9;
 }
