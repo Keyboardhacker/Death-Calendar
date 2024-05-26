@@ -5,10 +5,20 @@ document.addEventListener('DOMContentLoaded', (event) => {
   // Load saved state from localStorage
   const savedState = JSON.parse(localStorage.getItem('calendarState')) || [];
 
+  // Calculate the current week
+  const startDate = new Date('2004-01-27'); // Replace with your birthdate
+  const currentDate = new Date();
+  const weeksSinceStart = Math.floor((currentDate - startDate) / (1000 * 60 * 60 * 24 * 7));
+
   for (let i = 1; i <= totalWeeks; i++) {
     const gridItem = document.createElement('div');
     gridItem.className = 'grid-item';
     gridItem.textContent = i;
+
+    // Highlight the current week
+    if (i === weeksSinceStart) {
+      gridItem.classList.add('current-week');
+    }
 
     // Restore completed state
     if (savedState.includes(i)) {
@@ -30,4 +40,12 @@ document.addEventListener('DOMContentLoaded', (event) => {
     });
     localStorage.setItem('calendarState', JSON.stringify(completedItems));
   }
+
+  // Add reset button functionality
+  document.getElementById('reset-button').addEventListener('click', () => {
+    localStorage.removeItem('calendarState');
+    document.querySelectorAll('.grid-item.completed').forEach(item => {
+      item.classList.remove('completed');
+    });
+  });
 });
