@@ -2,7 +2,7 @@ body {
   font-family: 'Arial', sans-serif;
   background-color: #f0f8ff;
   margin: 0;
-  padding: 0;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -29,41 +29,25 @@ header p {
 
 main {
   width: 100%;
-  max-width: 1200px;
+  max-width: 800px;
   padding: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   background-color: #ffffff;
   border-radius: 10px;
-}
-
-.controls {
   display: flex;
-  justify-content: center;
-  margin-bottom: 20px;
-}
-
-#reset-button {
-  padding: 10px 20px;
-  background-color: #3498db;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-#reset-button:hover {
-  background-color: #2980b9;
+  flex-direction: column;
+  align-items: center;
 }
 
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(13, 1fr);
+  grid-template-columns: repeat(10, 1fr);
   grid-gap: 10px;
+  margin-bottom: 20px;
 }
 
 .grid-item {
-  position: relative;
+  width: 100%;
   padding-top: 100%;
   background-color: #ecf0f1;
   border-radius: 5px;
@@ -98,6 +82,20 @@ main {
 
 .grid-item span {
   position: absolute;
+}
+
+#new-week-button {
+  padding: 10px 20px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#new-week-button:hover {
+  background-color: #2980b9;
 }
 
 footer {
