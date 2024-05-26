@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
   // Calculate the current week
   const startDate = new Date('2004-01-27');
-  const currentDate = new Date();
+  const currentDate = new Date('2024-05-25');
   const weeksSinceStart = Math.floor((currentDate - startDate) / (1000 * 60 * 60 * 24 * 7));
 
   // Load saved state from localStorage
@@ -48,11 +48,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
     localStorage.setItem('calendarState', JSON.stringify(completedItems));
   }
 
-  // Add reset button functionality
-  document.getElementById('reset-button').addEventListener('click', () => {
-    localStorage.removeItem('calendarState');
-    document.querySelectorAll('.grid-item.completed').forEach(item => {
-      item.classList.remove('completed');
-    });
+  // Add new week button functionality
+  document.getElementById('new-week-button').addEventListener('click', () => {
+    alert("New week functionality will be added soon!");
   });
 });
