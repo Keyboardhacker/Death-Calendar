@@ -2,18 +2,25 @@ document.addEventListener('DOMContentLoaded', (event) => {
   const gridContainer = document.getElementById('calendar');
   const totalWeeks = 4576;
 
+  // Calculate the current week
+  const startDate = new Date('2004-01-27');
+  const currentDate = new Date('2024-05-25');
+  const weeksSinceStart = Math.floor((currentDate - startDate) / (1000 * 60 * 60 * 24 * 7));
+
   // Load saved state from localStorage
   const savedState = JSON.parse(localStorage.getItem('calendarState')) || [];
 
-  // Calculate the current week
-  const startDate = new Date('2004-01-27'); // Replace with your birthdate
-  const currentDate = new Date();
-  const weeksSinceStart = Math.floor((currentDate - startDate) / (1000 * 60 * 60 * 24 * 7));
-
-  for (let i = 1; i <= totalWeeks; i++) {
+  for (let i = 0; i < totalWeeks; i++) {
     const gridItem = document.createElement('div');
     gridItem.className = 'grid-item';
-    gridItem.textContent = i;
+
+    const weekDate = new Date(startDate);
+    weekDate.setDate(startDate.getDate() + i * 7);
+
+    const weekNumber = Math.floor(i / 52) + 1;
+    const weekDay = weekDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+
+    gridItem.innerHTML = `<span>Week ${weekNumber}<br>${weekDay}</span>`;
 
     // Highlight the current week
     if (i === weeksSinceStart) {
@@ -36,7 +43,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
   function saveState() {
     const completedItems = [];
     document.querySelectorAll('.grid-item.completed').forEach(item => {
-      completedItems.push(Number(item.textContent));
+      completedItems.push(Array.from(item.parentNode.children).indexOf(item));
     });
     localStorage.setItem('calendarState', JSON.stringify(completedItems));
   }
