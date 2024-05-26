@@ -1,51 +1,12 @@
 body {
   font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
+  background-color: #e0f7fa;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
   margin: 0;
-}
-
-.grid-container {
-  display: grid;
-  grid-template-columns: repeat(52, 20px);
-  grid-gap: 2px;
-  max-width: 1080px;
-  margin: 20px auto;
   padding: 20px;
-  background-color: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.grid-item {
-  width: 20px;
-  height: 20px;
-  background-color: #ddd;
-  text-align: center;
-  line-height: 20px;
-  cursor: pointer;
-  transition: background-color 0.3s, transform 0.3s;
-}
-
-.grid-item:hover {
-  background-color: #ccc;
-}
-
-.grid-item.completed {
-  background-color: #76c7c0;
-  transform: scale(1.1);
-}
-
-.grid-item.completed:hover {
-  background-color: #5aa69f;
-}
-
-.grid-item.current-week {
-  border: 2px solid red;
 }
 
 header {
@@ -55,25 +16,29 @@ header {
 
 header h1 {
   margin: 0;
-  font-size: 2em;
-  color: #333;
+  font-size: 2.5em;
+  color: #00796b;
 }
 
 header p {
   margin: 0;
-  color: #666;
+  color: #004d40;
 }
 
-footer {
-  text-align: center;
-  margin-top: 20px;
-  color: #666;
+main {
+  width: 100%;
+  max-width: 1200px;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
 }
 
 #reset-button {
-  margin-bottom: 20px;
   padding: 10px 20px;
-  background-color: #76c7c0;
+  background-color: #00796b;
   color: white;
   border: none;
   border-radius: 5px;
@@ -82,5 +47,59 @@ footer {
 }
 
 #reset-button:hover {
-  background-color: #5aa69f;
+  background-color: #004d40;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(13, 1fr);
+  grid-gap: 10px;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.grid-item {
+  width: 100%;
+  padding-top: 100%; /* This creates a square */
+  background-color: #b2dfdb;
+  position: relative;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #004d40;
+  font-size: 0.9em;
+}
+
+.grid-item:hover {
+  background-color: #80cbc4;
+}
+
+.grid-item.completed {
+  background-color: #00796b;
+  color: white;
+  transform: scale(1.1);
+}
+
+.grid-item.completed:hover {
+  background-color: #004d40;
+}
+
+.grid-item.current-week {
+  border: 2px solid red;
+}
+
+.grid-item span {
+  position: absolute;
+}
+
+footer {
+  text-align: center;
+  margin-top: 20px;
+  color: #004d40;
 }
