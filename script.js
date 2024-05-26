@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
   // Calculate the current week
   const startDate = new Date('2004-01-27');
-  const currentDate = new Date('2024-05-25');
+  const currentDate = new Date();
   const weeksSinceStart = Math.floor((currentDate - startDate) / (1000 * 60 * 60 * 24 * 7));
 
   // Load saved state from localStorage
@@ -17,24 +17,14 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const weekDate = new Date(startDate);
     weekDate.setDate(startDate.getDate() + i * 7);
 
-    const weekNumber = i + 1;
-    const weekDay = weekDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-
-    // Highlight the current week
+    // Highlight the completed weeks
     if (i <= weeksSinceStart) {
       gridItem.classList.add('completed');
     }
 
-    gridItem.innerHTML = `<span>${weekNumber}<br>${weekDay}</span>`;
-
     // Highlight the current week
     if (i === weeksSinceStart) {
       gridItem.classList.add('current-week');
-    }
-
-    // Restore completed state
-    if (savedState.includes(i)) {
-      gridItem.classList.add('completed');
     }
 
     gridItem.addEventListener('click', () => {
